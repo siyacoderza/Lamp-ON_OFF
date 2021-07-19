@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<div style="width: 900px; height:500px; margin: 0 auto;">
+    <div style="float: left; width: 70px;margin-top: 100px;">
+        <img src="img/shout.png" id="lampCord" onclick="on_off()" />
+    </div>
+    <div style="width: 300px; height: 500px;text-align: center;float: left;">
+        <div>
+            <img src="img/pic_bulboff.gif" style="width: 150px; height: 300px;" id="bulbImage" />
+        </div>
+        <div>
+            <img src="img/on.gif" style="width: 250px; height: 100px;" onclick="on_off()" id="on_off_img" />
+        </div>
+    </div>
+    <div style="width: 400px; height: 500px;text-align: left;float: left;" id="div">
+
+    </div>
+</div>
+<script type="text/javascript">
+    var i = 0;
+    var a = 1; 
+     
+// number display lamp off time of opening
+     var on_off_img = [ "img / off.gif", "img / on.gif"]; // store opening and closing button image
+     var bulbImg = [ "img / pic_bulbon.gif", "img / pic_bulboff.gif"]; // store non-light emitting lamp and a light emitting image
+     var lampCord = [ "img / long.png", "img / shout.png"]; // store image rope lights
+     var time = [ "lamp on time:" "lamp off time:"]; // store display lamp opening and closing times of the text
+
+// turn on or off lights
+			function on_off() {
+				 document.getElementById ( 'on_off_img') src = on_off_img [i];. // switch button image for obtaining
+				 document.getElementById ( 'bulbImage') src = bulbImg [i];. // Get lamp image
+				 document.getElementById ( 'lampCord') src = lampCord [i];. // Get image rope lights
+				 on_time (); // open or close time of an electric lamp
+				 // If the judgment i = 0, so that i = 1 (lamp lighting), or i = 0 (no light emission lamp)
+				if(i == 0) {
+					i = 1;
+				} else {
+					i = 0;
+				}
+			}
+
+// opening and closing time
+function on_time() {
+				var date = new Date();
+				 var myYear = date.getFullYear (); // get the current year
+				 var myMonth = date.getMonth () + 1; // get the current month
+				 var myDay = date.getDate () // get the current date (1-31)
+				 var myHours = date.getHours () // get the current hour (0-23)
+				 var myMinu = date.getMinutes () // get the current minute (0-59)
+				 var mySec = date.getSeconds () // get the current (0-59)
+				 // Let's get open or close time of accumulating text
+				 . Document.getElementById ( "div") innerHTML + = a + time [i] + myYear + "of" + myMonth + "month" + myDay + "date" + myHours + ":" + myMinu + ":" + mySec + "<br/>";
+				 a ++; // accumulating the number of times display text
+				 // Ruoguo display count is greater than 21, then empty the text, and continues to display text
+				if(a > 21){
+					document.getElementById("div").innerHTML = "";
+					 .Document.getElementById ( "div") innerHTML + = time [i] + myYear + "of" + myMonth + "month" + myDay + "date" + myHours + ":" + myMinu + ":" + mySec + " <br/> ";
+					a = 1;
+				}
+			}
+</script>
+</body>
+</html>
